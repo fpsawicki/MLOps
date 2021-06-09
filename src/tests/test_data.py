@@ -36,6 +36,3 @@ def test_dataset_shape():
     assert test_labels.shape[0] == test_imgs.shape[0], 'Number of test labels do not match number of test images'
     assert list(test_imgs.shape[1:3]) == [28, 28], 'Invalid dimensions of test images (should be 28x28)'
     assert set(torch.unique(test_labels).tolist()) == set(range(0, 10)), 'Missing labels in testing data'
-
-
-

@@ -126,7 +126,7 @@ class Trainer:
             model = MyAwesomeModel()
             model.load_state_dict(checkpoint)
             model = model.to(DEVICE)
-        
+
         total_acc = 0
         with torch.no_grad():
             for images, labels in self.valid_set:

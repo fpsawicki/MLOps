@@ -8,9 +8,8 @@ from skimage.io import imread
 from skimage.color import rgb2gray, rgba2rgb
 
 import torch
-from torch import nn, optim
 from torch.utils.data import Dataset
-from torchvision import datasets, transforms
+from torchvision import transforms
 
 from models.cnn_model import MyAwesomeModel
 
