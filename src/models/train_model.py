@@ -13,6 +13,9 @@ from torchvision import datasets, transforms
 from models.cnn_model import MyAwesomeModel
 
 
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
 class Trainer:
     def __init__(self):
         self.dir = pathlib.Path(__file__).parent
@@ -79,7 +82,7 @@ class Trainer:
         print(f'Training with: {args}')
 
         model = MyAwesomeModel()
-        model = model.cuda()
+        model = model.to(DEVICE)
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
         criterion = nn.NLLLoss()
 
@@ -88,8 +91,8 @@ class Trainer:
             running_acc = 0
             for images, labels in self.train_set:
                 model.train()
-                images = images.cuda()
-                labels = labels.cuda()
+                images = images.to(DEVICE)
+                labels = labels.to(DEVICE)
                 # Forward
                 optimizer.zero_grad()
                 output = model(images)
@@ -122,13 +125,13 @@ class Trainer:
             checkpoint = torch.load(f'{args.path}/{args.name}.pth')
             model = MyAwesomeModel()
             model.load_state_dict(checkpoint)
-            model = model.cuda()
+            model = model.to(DEVICE)
         
         total_acc = 0
         with torch.no_grad():
             for images, labels in self.valid_set:
-                images = images.cuda()
-                labels = labels.cuda()
+                images = images.to(DEVICE)
+                labels = labels.to(DEVICE)
                 model.eval()
                 # Forward
                 output = model(images)
