@@ -1,0 +1,6 @@
+[run]
+omit = 
+     */site-packages/*
+    */distutils/*
+    */__init__.py
+    */tests/*

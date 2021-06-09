@@ -83,6 +83,9 @@ data/*
 src/data/FashionMNIST/*
 src/data/MNIST/*
 
+# reports
+reports/figures/*
+
 # Mac OS-specific storage files
 .DS_Store
 
